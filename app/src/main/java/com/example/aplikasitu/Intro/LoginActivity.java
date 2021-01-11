@@ -107,4 +107,16 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        PrefManager manager = new PrefManager(this);
+        boolean id = manager.getSession();
+        if (id){
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+    }
 }
