@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_list_bg"
+    android:layout_marginRight="-10dp"
+    android:weightSum="10"
+    tools:context=".Siswa.SiswaActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_weight="9"
+        android:id="@+id/ls"
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:onClick="back"
+            android:src="@drawable/ic_arrow_left" />
+        <TextView
+            android:text="Data Siswa"
+            android:textColor="@color/white"
+            android:fontFamily="@font/quicksand_medium"
+            android:textSize="24sp"
+            android:layout_toRightOf="@id/backButton"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/search_siswa"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:onClick="search"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_magnify" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_siswa"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_width="match_parent"
+        tools:listitem="@layout/row_siswa"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+</LinearLayout>
