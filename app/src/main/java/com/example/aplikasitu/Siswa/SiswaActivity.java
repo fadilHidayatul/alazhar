@@ -84,6 +84,8 @@ public class SiswaActivity extends AppCompatActivity {
                                 dataBeanList.add(siswa);
                             }
 
+                            binding.jumlah.setText(array.length()+"");
+
                             binding.recyclerSiswa.setLayoutManager(new LinearLayoutManager(context));
                             binding.recyclerSiswa.setHasFixedSize(true);
                             adapter = new SiswaAdapter(context,dataBeanList);
