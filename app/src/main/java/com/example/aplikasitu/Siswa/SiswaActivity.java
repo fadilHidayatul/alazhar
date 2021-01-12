@@ -1,6 +1,7 @@
 package com.example.aplikasitu.Siswa;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Context;
@@ -49,6 +50,20 @@ public class SiswaActivity extends AppCompatActivity {
         apiInterface = UtilsApi.getApiService();
 
         getData();
+
+        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
     }
 
     private void getData() {
@@ -63,16 +78,16 @@ public class SiswaActivity extends AppCompatActivity {
 
                             dataBeanList = new ArrayList<>();
                             Gson gson = new Gson();
-
+                            dataBeanList.clear();
                             for (int i = 0; i < array.length(); i++) {
                                 Siswa.DATABean siswa = gson.fromJson(array.getJSONObject(i).toString(),Siswa.DATABean.class);
                                 dataBeanList.add(siswa);
                             }
 
-                            adapter = new SiswaAdapter(context,dataBeanList);
-                            binding.recyclerSiswa.setAdapter(adapter);
                             binding.recyclerSiswa.setLayoutManager(new LinearLayoutManager(context));
                             binding.recyclerSiswa.setHasFixedSize(true);
+                            adapter = new SiswaAdapter(context,dataBeanList);
+                            binding.recyclerSiswa.setAdapter(adapter);
 
                         }else{
                             Toast.makeText(context, ""+object.getString("status"), Toast.LENGTH_SHORT).show();
