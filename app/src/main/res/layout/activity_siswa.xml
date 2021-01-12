@@ -5,57 +5,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_list_bg"
-    android:layout_marginRight="-10dp"
+    android:orientation="vertical"
     android:weightSum="10"
-    tools:context=".Siswa.SiswaActivity"
-    android:orientation="vertical">
+    tools:context=".Siswa.SiswaActivity">
 
     <RelativeLayout
-        android:layout_weight="9"
         android:id="@+id/ls"
-        android:gravity="center_vertical"
-        android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_weight="9"
+        >
 
         <ImageView
             android:id="@+id/backButton"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="24dp"
             android:onClick="back"
             android:src="@drawable/ic_arrow_left" />
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/backButton"
+            android:fontFamily="@font/quicksand_medium"
             android:text="Data Siswa"
             android:textColor="@color/white"
-            android:fontFamily="@font/quicksand_medium"
-            android:textSize="24sp"
-            android:layout_toRightOf="@id/backButton"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textSize="24sp" />
+
         <ImageView
             android:id="@+id/search_siswa"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:onClick="search"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="20dp"
             android:layout_alignParentEnd="true"
+            android:layout_marginEnd="6dp"
+            android:onClick="search"
             android:src="@drawable/ic_magnify" />
 
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:visibility="gone"
+            android:layout_marginHorizontal="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_siswa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="15dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:scrollbars="none"
+            android:layout_below="@id/searchView"
+            tools:listitem="@layout/row_siswa">
+
+        </androidx.recyclerview.widget.RecyclerView>
     </RelativeLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_siswa"
-        android:layout_weight="1"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_width="match_parent"
-        tools:listitem="@layout/row_siswa"
-        android:layout_height="match_parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
+
+
+
 
 
 

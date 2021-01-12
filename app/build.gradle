@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -50,5 +54,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     implementation 'com.google.code.gson:gson:2.8.5'
+    //searchview
+    implementation 'com.github.wrdlbrnft:sorted-list-adapter:0.3.0.27'
 
 }

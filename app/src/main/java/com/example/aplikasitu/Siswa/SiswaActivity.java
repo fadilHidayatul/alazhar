@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.aplikasitu.R;
@@ -28,6 +29,8 @@ import okhttp3.internal.Util;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.view.View.VISIBLE;
 
 public class SiswaActivity extends AppCompatActivity {
     private ActivitySiswaBinding binding;
@@ -98,6 +101,17 @@ public class SiswaActivity extends AppCompatActivity {
     }
 
     public void search(View view) {
+        binding.searchView.setVisibility(VISIBLE);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (binding.searchView.getVisibility() == VISIBLE){
+            binding.searchView.setVisibility(View.GONE);
+        }else {
+            finish();
+        }
+
 
     }
 }

@@ -1,14 +1,17 @@
 package com.example.aplikasitu.Main;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.aplikasitu.Intro.LoginActivity;
 import com.example.aplikasitu.R;
 import com.example.aplikasitu.SharedPreferences.PrefManager;
 import com.example.aplikasitu.Siswa.SiswaActivity;
@@ -35,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
         binding.TU.setText(manager.getUsername());
 
         navigateMenu();
+        logout();
     }
+
+
 
     private void navigateMenu() {
         binding.menuSiswa.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +49,34 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SiswaActivity.class);
                 startActivity(intent);
+            }
+        });
+    }
+
+    private void logout() {
+        binding.logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext(),R.style.AlertDialog);
+                builder.setMessage("Keluar Aplikasi?")
+                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                manager.removeSession();
+                                finish();
+                                Intent intent = new Intent(v.getContext(), LoginActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
     }
