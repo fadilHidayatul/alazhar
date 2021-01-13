@@ -17,4 +17,7 @@ public interface ApiInterface {
     Call<ResponseBody>login(@Field("username") String username,
                             @Field("password") String password
                             );
+
+    @GET("pegawai/get_pegawai.php")
+    Call<ResponseBody>allPegawai();
 }

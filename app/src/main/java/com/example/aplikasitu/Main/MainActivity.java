@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.aplikasitu.Intro.LoginActivity;
+import com.example.aplikasitu.Pegawai.PegawaiActivity;
 import com.example.aplikasitu.R;
 import com.example.aplikasitu.SharedPreferences.PrefManager;
 import com.example.aplikasitu.Siswa.SiswaActivity;
@@ -48,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SiswaActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.menuPegawai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PegawaiActivity.class);
                 startActivity(intent);
             }
         });

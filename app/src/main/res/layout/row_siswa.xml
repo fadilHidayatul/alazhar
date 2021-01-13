@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardBackgroundColor="@color/testblue2"
     app:cardCornerRadius="@dimen/_12sdp"
-    android:layout_marginVertical="@dimen/_8sdp"
+    android:layout_marginVertical="@dimen/_12sdp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
