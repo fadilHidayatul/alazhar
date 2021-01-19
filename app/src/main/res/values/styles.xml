@@ -8,11 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AlertDialog" parent="Theme.AppCompat.Light.Dialog">
+    <style name="AlertDialog">
         <!-- Customize your theme here. -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
+        <item name="android:innerRadius">@dimen/_12sdp</item>
         <item name="android:textColor">@color/softblack</item>
         <item name="colorAccent">@color/softblack</item>
-
     </style>
 
 </resources>

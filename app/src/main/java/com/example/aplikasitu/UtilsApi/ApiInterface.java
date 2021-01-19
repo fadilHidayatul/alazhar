@@ -20,4 +20,7 @@ public interface ApiInterface {
 
     @GET("pegawai/get_pegawai.php")
     Call<ResponseBody>allPegawai();
+
+    @GET("kelas/get_kelas.php")
+    Call<ResponseBody>getAllKelas();
 }

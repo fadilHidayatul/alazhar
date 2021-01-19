@@ -56,5 +56,12 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     //searchview
     implementation 'com.github.wrdlbrnft:sorted-list-adapter:0.3.0.27'
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    //alertdialog
+    implementation 'com.github.d-max:spots-dialog:1.1@aar'
+    //material
+    implementation 'com.google.android.material:material:1.2.1'
+
 
 }

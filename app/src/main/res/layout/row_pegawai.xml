@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/_12sdp"
-    app:cardBackgroundColor="@color/softred"
+    app:cardBackgroundColor="@color/softblue"
     android:layout_marginVertical="@dimen/_12sdp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -13,7 +13,7 @@
         android:layout_margin="6dp"
         android:paddingVertical="@dimen/_6sdp"
         android:layout_height="wrap_content">
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/menu1"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -21,7 +21,6 @@
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_officer"
             android:background="@drawable/oval"
             />
         <TextView
@@ -31,6 +30,7 @@
             android:layout_toStartOf="@id/gender_pegawai"
             android:textColor="@color/white"
             android:textSize="22sp"
+            android:gravity="bottom"
             android:paddingEnd="@dimen/_4sdp"
             android:layout_toEndOf="@id/menu1"
             android:layout_width="wrap_content"
@@ -53,7 +53,8 @@
             android:fontFamily="@font/quicksand"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:layout_marginVertical="8dp"
+            android:gravity="top"
+            android:layout_marginBottom="12dp"
             android:layout_below="@id/nama_pegawai"
             android:layout_toEndOf="@id/menu1"
             android:layout_width="wrap_content"

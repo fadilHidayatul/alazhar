@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.aplikasitu.Intro.LoginActivity;
+import com.example.aplikasitu.Kelas.KelasActivity;
 import com.example.aplikasitu.Pegawai.PegawaiActivity;
 import com.example.aplikasitu.R;
 import com.example.aplikasitu.SharedPreferences.PrefManager;
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         navigateMenu();
         logout();
+
+
     }
 
 
@@ -56,6 +59,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PegawaiActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.menuKelas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), KelasActivity.class);
                 startActivity(intent);
             }
         });
