@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardBackgroundColor="@color/softblue"
     app:cardCornerRadius="12dp"
+    android:id="@+id/cardKelas"
     android:layout_margin="@dimen/_12sdp"
     android:layout_width="@dimen/_130sdp"
     android:layout_height="@dimen/_130sdp">
@@ -17,8 +18,8 @@
             android:id="@+id/roundImage"
             android:src="@drawable/ic_presentation"
             android:layout_above="@id/kelas"
-            android:layout_width="60dp"
-            android:layout_height="60dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
         <TextView
             android:id="@+id/kelas"
             android:layout_width="wrap_content"

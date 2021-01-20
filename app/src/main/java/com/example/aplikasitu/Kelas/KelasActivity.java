@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.aplikasitu.Kelas.Adapter.KelasAdapter;
 import com.example.aplikasitu.R;
@@ -22,6 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dmax.dialog.SpotsDialog;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +39,8 @@ public class KelasActivity extends AppCompatActivity {
     List<Kelas.DATABean> dataBeans;
     ApiInterface apiInterface;
 
+    AlertDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,16 +50,19 @@ public class KelasActivity extends AppCompatActivity {
         context = this;
         apiInterface = UtilsApi.getApiService();
 
+        dialog = new SpotsDialog.Builder().setContext(context).setMessage("Please Wait").setCancelable(false).build();
+
         getAllKelas();
-
-
     }
 
+
     private void getAllKelas() {
+        dialog.show();
         apiInterface.getAllKelas().enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
+                    dialog.hide();
                     try {
                         JSONObject object = new JSONObject(response.body().string());
                         if (object.getString("status").equals("200")){
@@ -72,7 +81,20 @@ public class KelasActivity extends AppCompatActivity {
                             binding.recyclerKelas.setLayoutManager(new GridLayoutManager(context,2));
                             binding.recyclerKelas.setHasFixedSize(true);
 
+                        }else{
+                            dialog.dismiss();
+                            Toast.makeText(context, ""+object.getString("message"), Toast.LENGTH_SHORT).show();
                         }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    try {
+                        dialog.dismiss();
+                        JSONObject object = new JSONObject(response.errorBody().string());
+                        Toast.makeText(context, ""+object.getString("message"), Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -83,8 +105,32 @@ public class KelasActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-
+                dialog.dismiss();
+                Toast.makeText(context, "Koneksi Internet", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+
+    public void back(View view) {
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        dialog.dismiss();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dialog.dismiss();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dialog.dismiss();
     }
 }
