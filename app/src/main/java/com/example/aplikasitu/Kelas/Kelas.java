@@ -16,6 +16,7 @@ public class Kelas {
     private String message;
     private List<DATABean> DATA;
 
+
     public int getSuccess() {
         return success;
     }
@@ -92,5 +93,7 @@ public class Kelas {
         public void setJumlah_murid(int jumlah_murid) {
             this.jumlah_murid = jumlah_murid;
         }
+
+
     }
 }

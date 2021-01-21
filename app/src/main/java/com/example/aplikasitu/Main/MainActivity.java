@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.aplikasitu.Intro.LoginActivity;
+import com.example.aplikasitu.Jadwal.JadwalActivity;
 import com.example.aplikasitu.Kelas.KelasActivity;
 import com.example.aplikasitu.Pegawai.PegawaiActivity;
 import com.example.aplikasitu.R;
@@ -66,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), KelasActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.menuJadwal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), JadwalActivity.class);
                 startActivity(intent);
             }
         });

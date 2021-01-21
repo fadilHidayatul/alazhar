@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Kelas.KelasActivity"></activity>
+        <activity android:name=".Jadwal.JadwalDetailActivity"></activity>
+        <activity android:name=".Jadwal.JadwalActivity" />
+        <activity android:name=".Kelas.KelasActivity" />
         <activity android:name=".Pegawai.PegawaiActivity" />
         <activity android:name=".Siswa.SiswaActivity" />
         <activity android:name=".Intro.LoginActivity">

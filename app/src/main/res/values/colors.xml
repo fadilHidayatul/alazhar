@@ -10,12 +10,14 @@
     <color name="red">#E54141</color>
     <color name="redlight">#D15858</color>
     <color name="softred">#E69595</color>
+    <color name="softred2">#ED6769</color>
     <color name="softblue">#CC3F2A92</color>
     <color name="testred">#F4E1E1</color>
     <color name="testblue2">#D6D1EA</color>
     <color name="colorKelas1">#FEC9A3</color>
     <color name="colorKelas2">#4D4D4D</color>
     <color name="colorJumlahKelas">#976147</color>
+    <color name="cyan">#E7F5F8</color>
 
 
 
