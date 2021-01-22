@@ -23,4 +23,9 @@ public interface ApiInterface {
 
     @GET("kelas/get_kelas.php")
     Call<ResponseBody>getAllKelas();
+
+    @FormUrlEncoded
+    @POST("kelas/get_grup.php")
+    Call<ResponseBody>getGrupKelas(@Field("kelas") String kelas
+    );
 }

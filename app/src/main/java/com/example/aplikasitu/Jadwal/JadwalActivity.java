@@ -47,8 +47,6 @@ public class JadwalActivity extends AppCompatActivity {
         apiInterface = UtilsApi.getApiService();
 
         getJadwal();
-
-
     }
 
     //cek data ganda
@@ -86,7 +84,6 @@ public class JadwalActivity extends AppCompatActivity {
                                 }
 
                             }
-
 
                             adapter = new JadwalAdapter(context,dataBeans);
                             binding.recyclerJadwal.setAdapter(adapter);

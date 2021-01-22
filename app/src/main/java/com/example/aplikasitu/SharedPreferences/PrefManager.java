@@ -17,6 +17,7 @@ public class PrefManager {
     public static final String ID_SISWA = "ID_SISWA";
     public static final String USERNAME = "USERNAME";
     public static final String LEVEL = "LEVEL";
+    public static final String KELAS = "KELAS";
 
 
     public PrefManager(Context context) {
@@ -62,5 +63,14 @@ public class PrefManager {
     }
     public String getLevel(){
         return preferences.getString(LEVEL,"");
+    }
+
+    //kelas
+    public void spKelas(String key, String value){
+        editor.putString(key, value);
+        editor.commit();
+    }
+    public String getKelas(){
+        return preferences.getString(KELAS,"");
     }
 }
