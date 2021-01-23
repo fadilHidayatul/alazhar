@@ -28,4 +28,11 @@ public interface ApiInterface {
     @POST("kelas/get_grup.php")
     Call<ResponseBody>getGrupKelas(@Field("kelas") String kelas
     );
+
+    @FormUrlEncoded
+    @POST("jadwal/get_jadwal.php")
+    Call<ResponseBody>getJadwal(@Field("kelas") String kelas,
+                                @Field("grup") String grup,
+                                @Field("hari") String hari
+    );
 }

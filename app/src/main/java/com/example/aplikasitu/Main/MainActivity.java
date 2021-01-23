@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.aplikasitu.Absen.AbsenActivity;
 import com.example.aplikasitu.Intro.LoginActivity;
 import com.example.aplikasitu.Jadwal.JadwalActivity;
 import com.example.aplikasitu.Kelas.KelasActivity;
@@ -43,10 +44,7 @@ public class MainActivity extends AppCompatActivity {
         navigateMenu();
         logout();
 
-
     }
-
-
 
     private void navigateMenu() {
         binding.menuSiswa.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), JadwalActivity.class);
                 startActivity(intent);
             }
+        });
+        binding.menuAbsen.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), AbsenActivity.class);
+            startActivity(intent);
         });
     }
 
