@@ -50,6 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/hint"
             android:text="ⓘ Klik Untuk Melihat Detail Absen"
             android:textSize="18sp"
             android:fontFamily="@font/quicksand_medium"
