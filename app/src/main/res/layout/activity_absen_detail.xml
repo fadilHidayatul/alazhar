@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/ic_list_bg"
+    android:layout_height="match_parent"
     android:weightSum="10"
-    tools:context=".Absen.AbsenActivity">
+    android:orientation="vertical"
+    tools:context=".Absen.AbsenDetailActivity">
 
     <RelativeLayout
         android:layout_weight="9"
@@ -21,8 +21,8 @@
             android:id="@+id/backButton"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginTop="24dp"
             android:onClick="back"
+            android:layout_marginTop="24dp"
             android:src="@drawable/ic_arrow_left" />
 
         <TextView
@@ -35,48 +35,39 @@
             android:text="Data Absen Pegawai"
             android:textColor="@color/white"
             android:textSize="24sp" />
-
-        <ImageView
-            android:id="@+id/search_btn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:onClick="searchAbsen"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="6dp"
-            android:src="@drawable/ic_magnify" />
     </RelativeLayout>
-
     <RelativeLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <TextView
-            android:id="@+id/hint"
-            android:text="ⓘ Klik Untuk Melihat Detail Absen"
-            android:textSize="18sp"
-            android:fontFamily="@font/quicksand_medium"
+            android:id="@+id/pegawai"
+            android:text="Nama Pegawai : "
+            android:fontFamily="@font/quicksand_bold"
+            android:textSize="20sp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="6dp"
             android:textColor="@color/colorKelas2"
-            android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchAbsen"
-            android:layout_marginHorizontal="22dp"
-            android:visibility="visible"
-            android:layout_below="@id/hint"
+        <TextView
+            android:id="@+id/nama_pegawai"
+            android:layout_toRightOf="@id/pegawai"
+            android:text="Fadil"
+            android:fontFamily="@font/quicksand_bold"
+            android:textSize="20sp"
+            android:layout_marginBottom="6dp"
+            android:textColor="@color/softred2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_absen2"
+            android:layout_below="@id/nama_pegawai"
+            android:layout_marginHorizontal="30dp"
+            tools:listitem="@layout/row_absen_detail"
+            tools:itemCount="4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_absen"
-            android:layout_below="@id/searchAbsen"
-            android:layout_marginHorizontal="22dp"
-
-            android:layout_marginBottom="6dp"
-            tools:listitem="@layout/row_absen"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
 
     </RelativeLayout>
 

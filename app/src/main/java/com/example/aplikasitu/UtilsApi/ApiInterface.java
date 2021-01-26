@@ -35,4 +35,9 @@ public interface ApiInterface {
                                 @Field("grup") String grup,
                                 @Field("hari") String hari
     );
+
+    @FormUrlEncoded
+    @POST("absen/get_absen_pegawai.php")
+    Call<ResponseBody>getAbsen(@Field("pegawai") String pegawai
+    );
 }

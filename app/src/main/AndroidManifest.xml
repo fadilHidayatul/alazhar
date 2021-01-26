@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Absen.AbsenActivity"></activity>
+        <activity android:name=".Absen.AbsenDetailActivity"></activity>
+        <activity android:name=".Absen.AbsenActivity" />
         <activity android:name=".Jadwal.ShowJadwalActivity" />
         <activity android:name=".Jadwal.JadwalDetailActivity" />
         <activity android:name=".Jadwal.JadwalActivity" />

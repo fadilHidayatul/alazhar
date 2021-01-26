@@ -33,7 +33,7 @@ public class JadwalShowAdapter extends RecyclerView.Adapter<JadwalShowAdapter.vi
     public void onBindViewHolder(@NonNull JadwalShowAdapter.viewHolder holder, int position) {
         holder.binding.matpel.setText(listJadwal.get(position).getMatpel());
         holder.binding.jamAwal.setText(listJadwal.get(position).getJam_awal().substring(0,5)+" - ");
-        holder.binding.jamAkhir.setText(listJadwal.get(position).getJam_akhir().substring(03,5));
+        holder.binding.jamAkhir.setText(listJadwal.get(position).getJam_akhir().substring(0,5));
 
     }
 
