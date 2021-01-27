@@ -1,6 +1,7 @@
 package com.example.aplikasitu.Absen;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.Activity;
@@ -43,6 +44,20 @@ public class AbsenActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         context = this;
         apiInterface = UtilsApi.getApiService();
+
+        binding.searchAbsen.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
         getPegawai();
 

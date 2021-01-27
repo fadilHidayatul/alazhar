@@ -63,7 +63,7 @@
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchAbsen"
             android:layout_marginHorizontal="22dp"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_below="@id/hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
