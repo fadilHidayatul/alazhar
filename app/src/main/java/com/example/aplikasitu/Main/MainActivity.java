@@ -17,6 +17,7 @@ import com.example.aplikasitu.Jadwal.JadwalActivity;
 import com.example.aplikasitu.Kelas.KelasActivity;
 import com.example.aplikasitu.Pegawai.PegawaiActivity;
 import com.example.aplikasitu.R;
+import com.example.aplikasitu.SPP.SppActivity;
 import com.example.aplikasitu.SharedPreferences.PrefManager;
 import com.example.aplikasitu.Siswa.SiswaActivity;
 import com.example.aplikasitu.databinding.ActivityMainBinding;
@@ -77,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
         });
         binding.menuAbsen.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), AbsenActivity.class);
+            startActivity(intent);
+        });
+        binding.menuSPP.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), SppActivity.class);
             startActivity(intent);
         });
     }

@@ -13,12 +13,17 @@
     <color name="softred">#E69595</color>
     <color name="softred2">#ED6769</color>
     <color name="testred">#F4E1E1</color>
+    <color name="newred">#EB6061</color>
     <color name="softblue">#CC3F2A92</color>
     <color name="testblue2">#D6D1EA</color>
     <color name="testblue">#EDEBF4</color>
+    <color name="newblue">#ABCDEF</color>
     <color name="colorKelas1">#FEC9A3</color>
     <color name="colorKelas2">#4D4D4D</color>
     <color name="colorJumlahKelas">#976147</color>
     <color name="cyan">#E7F5F8</color>
+    <color name="lightgreen">#D6F6D6</color>
+    <color name="green">#67CD65</color>
+    <color name="line">#ABB8AB</color>
 
 </resources>

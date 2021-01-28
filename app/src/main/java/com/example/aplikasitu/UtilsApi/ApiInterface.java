@@ -40,4 +40,7 @@ public interface ApiInterface {
     @POST("absen/get_absen_pegawai.php")
     Call<ResponseBody>getAbsen(@Field("pegawai") String pegawai
     );
+
+    @GET("spp/get_spp_siswa.php")
+    Call<ResponseBody>getSppSiswa();
 }

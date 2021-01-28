@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardSppSiswa"
+    app:cardCornerRadius="12dp"
+    android:backgroundTint="@color/lightgreen"
+    android:layout_marginBottom="36dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/no"
+            android:text="1"
+            android:gravity="center"
+            android:textColor="@color/lightgreen"
+            android:background="@drawable/oval"
+            android:backgroundTint="@color/redlight"
+            android:layout_width="45dp"
+            android:layout_marginEnd="16dp"
+            android:layout_height="45dp"/>
+        <TextView
+            android:id="@+id/nama_siswa"
+            android:text="Nama siswa"
+            android:textColor="@color/colorKelas2"
+            android:fontFamily="@font/quicksand_medium"
+            android:layout_centerVertical="true"
+            android:textSize="18sp"
+            android:layout_toEndOf="@id/no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
