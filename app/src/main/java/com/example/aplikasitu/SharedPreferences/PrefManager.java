@@ -19,6 +19,7 @@ public class PrefManager {
     public static final String LEVEL = "LEVEL";
     public static final String KELAS = "KELAS";
     public static final String SISWA_SPP = "SISWA_SPP";
+    public static final String NAMASISWA_SPP = "NAMA_SISWA_SPP";
 
 
     public PrefManager(Context context) {
@@ -82,5 +83,13 @@ public class PrefManager {
     }
     public String getSppSiswa(){
         return preferences.getString(SISWA_SPP,"");
+    }
+
+    public void spSppNama(String key, String value){
+        editor.putString(key, value);
+        editor.commit();
+    }
+    public String getSppNama(){
+        return preferences.getString(NAMASISWA_SPP,"");
     }
 }

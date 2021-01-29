@@ -43,4 +43,15 @@ public interface ApiInterface {
 
     @GET("spp/get_spp_siswa.php")
     Call<ResponseBody>getSppSiswa();
+
+    @FormUrlEncoded
+    @POST("spp/get_spp.php")
+    Call<ResponseBody>getSpp(@Field("id") String id,
+                             @Field("stat") String status
+    );
+
+    @FormUrlEncoded
+    @POST("spp/update_spp.php")
+    Call<ResponseBody>updateSpp(@Field("id") String id
+    );
 }

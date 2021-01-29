@@ -41,6 +41,7 @@ public class SppAdapter extends RecyclerView.Adapter<SppAdapter.viewHolder> {
         holder.binding.namaSiswa.setText(listSppSiswa.get(position).getNama_siswa());
         holder.binding.cardSppSiswa.setOnClickListener(v -> {
             manager.spSppSiswa(PrefManager.SISWA_SPP,listSppSiswa.get(position).getId_siswa());
+            manager.spSppNama(PrefManager.NAMASISWA_SPP,listSppSiswa.get(position).getNama_siswa());
             Intent intent = new Intent(v.getContext(), SppDetailActivity.class);
             context.startActivity(intent);
         });
