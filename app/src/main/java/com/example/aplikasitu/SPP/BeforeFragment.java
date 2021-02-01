@@ -1,10 +1,13 @@
 package com.example.aplikasitu.SPP;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.aplikasitu.R;
 import com.example.aplikasitu.SharedPreferences.PrefManager;
 import com.example.aplikasitu.UtilsApi.ApiInterface;
@@ -33,6 +37,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -55,10 +60,12 @@ public class BeforeFragment extends Fragment {
     String idSiswa = "";
     String status = "0";
     String namaSiswa = "";
+    int FRAGMENT_A = 1;
 
     public BeforeFragment() {
         // Required empty public constructor
     }
+
 
 
     @Override
@@ -94,6 +101,8 @@ public class BeforeFragment extends Fragment {
                     });
             AlertDialog dialog = builder.create();
             dialog.show();
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#D15858"));
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor("#CC3F2A92"));
         });
 
         return binding.getRoot();
@@ -104,6 +113,8 @@ public class BeforeFragment extends Fragment {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
+                    binding.relative1.setVisibility(View.VISIBLE);
+                    binding.relative2.setVisibility(View.GONE);
                     try {
                         JSONObject object = new JSONObject(response.body().string());
                         if (object.getString("status").equalsIgnoreCase("200")){
@@ -120,6 +131,20 @@ public class BeforeFragment extends Fragment {
                            binding.thn.setText("-"+dataBeans.get(0).getTgl_bayar().substring(0,4));
                            binding.bln.setText("-"+dataBeans.get(0).getTgl_bayar().substring(5,7));
                            binding.tgl.setText(dataBeans.get(0).getTgl_bayar().substring(8,10));
+                            Glide.with(context)
+                                    .load(UtilsApi.img+dataBeans.get(0).getBukti())
+                                    .fitCenter()
+                                    .placeholder(R.drawable.ic_exclamation)
+                                    .into(binding.imgBukti);
+
+                            binding.imgBukti.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(getActivity().getApplicationContext(),SppGambarActivity.class);
+                                    intent.putExtra("imgBukti",dataBeans.get(0).getBukti());
+                                    startActivity(intent);
+                                }
+                            });
                         }else{
 //                            Toast.makeText(context, ""+object.getString("message"), Toast.LENGTH_SHORT).show();
                             binding.relative1.setVisibility(View.GONE);

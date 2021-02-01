@@ -13,8 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SPP.SppDetailActivity"></activity>
-        <activity android:name=".SPP.SppDetailFragment" />
+        <activity android:name=".SPP.SppGambarActivity"></activity>
+        <activity android:name=".SPP.SppDetailActivity" />
         <activity android:name=".SPP.SppActivity" />
         <activity android:name=".Absen.AbsenDetailActivity" />
         <activity android:name=".Absen.AbsenActivity" />

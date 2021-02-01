@@ -3,10 +3,13 @@ package com.example.aplikasitu.SPP;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.aplikasitu.R;
@@ -32,10 +35,15 @@ public class SppDetailActivity extends AppCompatActivity {
         binding.tabLayout.setupWithViewPager(binding.viewPager);
 
         SppFragmentAdapter adapter = new SppFragmentAdapter(getSupportFragmentManager());
-        adapter.addFragment(new BeforeFragment(), "Belum Bayar");
+        adapter.addFragment(new BeforeFragment(),"Belum Bayar");
         adapter.addFragment(new AfterFragment(), "Sudah Bayar");
         binding.viewPager.setAdapter(adapter);
 
+
+
     }
 
+    public void backToSiswaSpp(View view) {
+        finish();
+    }
 }

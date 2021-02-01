@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorKelas2"
+    tools:context=".SPP.SppGambarActivity">
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_marginStart="24dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="24dp"
+        android:tint="@color/white"
+        android:onClick="backToSpp"
+        android:translationZ="12dp"
+        android:src="@drawable/ic_arrow_left" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="18dp"
+        android:layout_toRightOf="@id/backButton"
+        android:fontFamily="@font/quicksand_medium"
+        android:text="Bukti Pembayaran"
+        android:textColor="@color/white"
+        android:translationZ="12dp"
+        android:textSize="24sp" />
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/imgBuktiDetail"
+        android:src="@drawable/ic_exclamation"
+        android:layout_centerInParent="true"
+        android:scaleType="fitCenter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>
