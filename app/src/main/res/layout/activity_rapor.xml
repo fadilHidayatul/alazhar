@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:background="@drawable/ic_list_bg"
+    tools:context=".Rapor.RaporActivity">
+
+    <RelativeLayout
+        android:layout_weight="9.2"
+        android:id="@+id/ls"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        >
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_arrow_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="18dp"
+            android:layout_toRightOf="@id/backButton"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="Data Rapor"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_weight="0.8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/txtwarning"
+            android:text="ⓘ Pilih kelas untuk melihat rapor siswa"
+            android:textColor="@color/colorKelas2"
+            android:fontFamily="@font/quicksand_medium"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_kelas"
+            android:layout_below="@id/txtwarning"
+            android:scrollbars="none"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="28dp"
+            tools:listitem="@layout/row_rapor"
+            tools:itemCount="6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

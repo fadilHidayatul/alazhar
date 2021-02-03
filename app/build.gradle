@@ -63,8 +63,10 @@ dependencies {
     implementation 'com.github.d-max:spots-dialog:1.1@aar'
     //material
     implementation 'com.google.android.material:material:1.2.1'
-
+    //PhotoViewer
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    //PDVviewer
+    implementation 'es.voghdev.pdfviewpager:library:1.0.3'
 
 
 }

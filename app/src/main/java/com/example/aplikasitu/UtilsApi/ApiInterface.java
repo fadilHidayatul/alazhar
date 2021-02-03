@@ -54,4 +54,17 @@ public interface ApiInterface {
     @POST("spp/update_spp.php")
     Call<ResponseBody>updateSpp(@Field("id") String id
     );
+
+    @FormUrlEncoded
+    @POST("siswa/get_siswa_by_kelas.php")
+    Call<ResponseBody>getSiswaByKelas(@Field("kelas") String kelas,
+                                      @Field("grup") String grup
+    );
+
+    @FormUrlEncoded
+    @POST("rapor/get_rapor_siswa.php")
+    Call<ResponseBody>getRapor(@Field("id_siswa") String idSiswa,
+                               @Field("kelas") String kelas,
+                               @Field("grup") String grup
+    );
 }

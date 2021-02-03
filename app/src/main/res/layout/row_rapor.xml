@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="4dp"
+    android:layout_marginBottom="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+   <androidx.cardview.widget.CardView
+       android:id="@+id/mainCard"
+       app:cardCornerRadius="4dp"
+       android:backgroundTint="@color/newblue"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <TextView
+               android:id="@+id/txtKelas"
+               android:layout_marginStart="28dp"
+               android:text="Kelas X"
+               android:fontFamily="@font/quicksand_bold"
+               android:textSize="16sp"
+               android:layout_centerVertical="true"
+               android:layout_marginVertical="12dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+           <ImageView
+               android:id="@+id/arrow"
+               android:src="@drawable/ic_arrow_down_sign_to_navigate"
+               android:layout_centerVertical="true"
+               android:layout_alignParentEnd="true"
+               android:tint="@color/redlight"
+               android:layout_marginEnd="20dp"
+               android:layout_width="20dp"
+               android:layout_height="20dp"/>
+
+       </RelativeLayout>
+   </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:id="@+id/expandableKelas"
+        android:visibility="gone"
+        android:layout_below="@id/mainCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_row_kelas"
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="match_parent"
+            tools:listitem="@layout/row_rapor_child"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
