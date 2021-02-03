@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -63,6 +64,7 @@ public class ShowRaporActivity extends AppCompatActivity {
     }
 
     private void getRaporSiswa() {
+
         dialog.show();
         apiInterface.getRapor(idSIswa,kelas,grup).enqueue(new Callback<ResponseBody>() {
             @Override
@@ -72,6 +74,9 @@ public class ShowRaporActivity extends AppCompatActivity {
                     try {
                         JSONObject object = new JSONObject(response.body().string());
                         if (object.getString("status").equalsIgnoreCase("200")){
+                            binding.container.setVisibility(View.VISIBLE);
+                            binding.oops.setVisibility(View.GONE);
+
                             JSONArray array = object.getJSONArray("DATA");
 
                             binding.namaRapor.setText(""+array.getJSONObject(0).getString("siswa"));
@@ -97,7 +102,8 @@ public class ShowRaporActivity extends AppCompatActivity {
                             });
 
                         }else{
-                            Toast.makeText(context, ""+object.getString("message"), Toast.LENGTH_SHORT).show();
+                            binding.container.setVisibility(View.GONE);
+                            binding.oops.setVisibility(View.VISIBLE);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

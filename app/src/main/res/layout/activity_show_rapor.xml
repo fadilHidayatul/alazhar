@@ -40,7 +40,6 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/quicksand_medium"
                     android:gravity="center_vertical"
-                    android:text="Si"
                     android:textColor="@color/colorKelas2"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -49,12 +48,39 @@
 
             <LinearLayout
                 android:id="@+id/container"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:gravity="fill"
                 android:orientation="vertical" />
+
+            <RelativeLayout
+                android:id="@+id/oops"
+                android:visibility="gone"
+                android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/imgoops"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_above="@id/toops"
+                    android:src="@drawable/ic_oops"/>
+                <TextView
+                    android:id="@+id/toops"
+                    android:text="Rapor Siswa Tidak Tersedia"
+                    android:gravity="center"
+                    android:fontFamily="@font/quicksand_medium"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_centerInParent="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
         </LinearLayout>
+
+
     </androidx.cardview.widget.CardView>
 
 
