@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import dmax.dialog.SpotsDialog;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,7 +52,8 @@ public class BeforeFragment extends Fragment {
     String idSiswa = "";
     String status = "0";
     String namaSiswa = "";
-    int FRAGMENT_A = 1;
+
+    AlertDialog dialog;
 
     public BeforeFragment() {
         // Required empty public constructor
@@ -67,6 +69,7 @@ public class BeforeFragment extends Fragment {
         context = getContext();
         apiInterface = UtilsApi.getApiService();
         manager = new PrefManager(context);
+        dialog = new SpotsDialog.Builder().setMessage("Please Wait").setCancelable(false).setContext(context).build();
 
         idSiswa = manager.getSppSiswa();
         namaSiswa = manager.getSppNama();
@@ -100,10 +103,12 @@ public class BeforeFragment extends Fragment {
     }
 
     private void getSPP(String idSiswa) {
+        dialog.show();
         apiInterface.getSpp(idSiswa,status).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
+                    dialog.dismiss();
                     binding.relative1.setVisibility(View.VISIBLE);
                     binding.relative2.setVisibility(View.GONE);
                     try {
@@ -151,6 +156,7 @@ public class BeforeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                dialog.dismiss();
                 Toast.makeText(context, "Cek Koneksi Internet", Toast.LENGTH_SHORT).show();
             }
         });
@@ -158,10 +164,12 @@ public class BeforeFragment extends Fragment {
     }
 
     private void updateSpp(String idSiswa) {
+        dialog.show();
         apiInterface.updateSpp(idSiswa).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
+                    dialog.dismiss();
                     try {
                         JSONObject object = new JSONObject(response.body().string());
                         if (object.getString("status").equalsIgnoreCase("200")){
@@ -178,9 +186,21 @@ public class BeforeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                dialog.dismiss();
                 Toast.makeText(context, "Cek Koneksi Internet", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        dialog.dismiss();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dialog.dismiss();
+    }
 }

@@ -3,6 +3,7 @@ package com.example.aplikasitu.Rapor;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dmax.dialog.SpotsDialog;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,6 +36,8 @@ public class RaporActivity extends AppCompatActivity {
     ApiInterface apiInterface;
     List<Kelas.DATABean> dataBeans;
 
+    AlertDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,7 @@ public class RaporActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         context = this;
         apiInterface = UtilsApi.getApiService();
+        dialog = new SpotsDialog.Builder().setMessage("Please Wait").setContext(context).setCancelable(false).build();
 
         getKelasForRapor();
 
@@ -56,10 +61,12 @@ public class RaporActivity extends AppCompatActivity {
     }
 
     private void getKelasForRapor() {
+        dialog.show();
         apiInterface.getAllKelas().enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
+                    dialog.dismiss();
                     try {
                         JSONObject object = new JSONObject(response.body().string());
                         if (object.getString("status").equalsIgnoreCase("200")){
@@ -86,6 +93,8 @@ public class RaporActivity extends AppCompatActivity {
                             binding.recyclerKelas.setHasFixedSize(true);
 
 
+                        }else{
+                            Toast.makeText(context, ""+object.getString("message"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -97,8 +106,21 @@ public class RaporActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                dialog.dismiss();
                 Toast.makeText(context, "Cek Koneksi Internet", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dialog.dismiss();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dialog.dismiss();
     }
 }

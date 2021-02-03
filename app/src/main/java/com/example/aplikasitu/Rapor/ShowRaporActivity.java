@@ -3,6 +3,7 @@ package com.example.aplikasitu.Rapor;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -21,6 +22,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import dmax.dialog.SpotsDialog;
 import es.voghdev.pdfviewpager.library.RemotePDFViewPager;
 import es.voghdev.pdfviewpager.library.adapter.PDFPagerAdapter;
 import es.voghdev.pdfviewpager.library.remote.DownloadFile;
@@ -36,6 +38,7 @@ public class ShowRaporActivity extends AppCompatActivity {
 
     Context context;
     ApiInterface apiInterface;
+    AlertDialog dialog;
 
     RemotePDFViewPager remotePDFViewPager;
     PDFPagerAdapter adapter;
@@ -48,8 +51,9 @@ public class ShowRaporActivity extends AppCompatActivity {
 
         context = this;
         apiInterface = UtilsApi.getApiService();
-        Intent intent = getIntent();
+        dialog = new SpotsDialog.Builder().setMessage("Please Wait").setContext(context).setCancelable(false).build();
 
+        Intent intent = getIntent();
         idSIswa = intent.getStringExtra("idSiswa");
         kelas = intent.getStringExtra("kelas");
         grup = intent.getStringExtra("grup");
@@ -59,10 +63,12 @@ public class ShowRaporActivity extends AppCompatActivity {
     }
 
     private void getRaporSiswa() {
+        dialog.show();
         apiInterface.getRapor(idSIswa,kelas,grup).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
+                    dialog.dismiss();
                     try {
                         JSONObject object = new JSONObject(response.body().string());
                         if (object.getString("status").equalsIgnoreCase("200")){
@@ -89,7 +95,9 @@ public class ShowRaporActivity extends AppCompatActivity {
 
                                 }
                             });
-//                            Toast.makeText(context, ""+file, Toast.LENGTH_SHORT).show();
+
+                        }else{
+                            Toast.makeText(context, ""+object.getString("message"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -101,6 +109,7 @@ public class ShowRaporActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                dialog.dismiss();
                 Toast.makeText(context, "Cek Koneksi Internet", Toast.LENGTH_SHORT).show();
             }
         });
@@ -115,5 +124,17 @@ public class ShowRaporActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dialog.dismiss();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dialog.dismiss();
     }
 }

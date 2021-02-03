@@ -1,5 +1,6 @@
 package com.example.aplikasitu.SPP;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.aplikasitu.R;
@@ -30,6 +32,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dmax.dialog.SpotsDialog;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,6 +51,8 @@ public class AfterFragment extends Fragment {
 
     String idSiswa = "";
 
+    AlertDialog dialog;
+
     public AfterFragment() {
         // Required empty public constructor
     }
@@ -60,6 +65,7 @@ public class AfterFragment extends Fragment {
         context = getContext();
         manager = new PrefManager(context);
         apiInterface = UtilsApi.getApiService();
+        dialog = new SpotsDialog.Builder().setMessage("Please Wait").setContext(context).setCancelable(false).build();
 
 
         idSiswa = manager.getSppSiswa();
@@ -78,10 +84,12 @@ public class AfterFragment extends Fragment {
     }
 
     private void getSpp(String idSiswa) {
+        dialog.show();
         apiInterface.getSpp(idSiswa,"1").enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
+                    dialog.dismiss();
                     binding.relative1.setVisibility(View.VISIBLE);
                     binding.relative2.setVisibility(View.GONE);
 
@@ -130,13 +138,21 @@ public class AfterFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-
+                dialog.dismiss();
+                Toast.makeText(context, "Cek Koneksi Internet", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void refresh(){
-        getSpp(idSiswa);
+    @Override
+    public void onPause() {
+        super.onPause();
+        dialog.dismiss();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dialog.dismiss();
+    }
 }

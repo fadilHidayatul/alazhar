@@ -3,8 +3,10 @@ package com.example.aplikasitu.SPP;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.aplikasitu.SPP.Adapter.SppAdapter;
@@ -21,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dmax.dialog.SpotsDialog;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +36,8 @@ public class SppActivity extends AppCompatActivity {
     List<SppSiswa.DATABean> dataBeans;
     ApiInterface apiInterface;
 
+    AlertDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +45,18 @@ public class SppActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         context = this;
         apiInterface = UtilsApi.getApiService();
+        dialog = new SpotsDialog.Builder().setMessage("Please Wait").setContext(context).setCancelable(false).build();
 
         getSiswaSPP();
     }
 
     private void getSiswaSPP() {
+        dialog.show();
         apiInterface.getSppSiswa().enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
+                    dialog.dismiss();
                     try {
                         JSONObject object = new JSONObject(response.body().string());
                         if (object.getString("status").equalsIgnoreCase("200")){
@@ -76,6 +84,7 @@ public class SppActivity extends AppCompatActivity {
                     }
                 }else {
                     try {
+                        dialog.dismiss();
                         JSONObject object = new JSONObject(response.errorBody().string());
                         Toast.makeText(context, ""+object.getString("message"), Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
@@ -88,8 +97,25 @@ public class SppActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                dialog.dismiss();
                 Toast.makeText(context, "Cek Koneksi Internet", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dialog.dismiss();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dialog.dismiss();
+    }
+
+    public void back(View view) {
+        finish();
     }
 }

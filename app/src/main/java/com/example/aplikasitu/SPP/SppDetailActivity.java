@@ -39,8 +39,6 @@ public class SppDetailActivity extends AppCompatActivity {
         adapter.addFragment(new AfterFragment(), "Sudah Bayar");
         binding.viewPager.setAdapter(adapter);
 
-
-
     }
 
     public void backToSiswaSpp(View view) {

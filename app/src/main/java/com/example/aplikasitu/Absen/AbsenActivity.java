@@ -5,6 +5,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dmax.dialog.SpotsDialog;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,6 +39,8 @@ public class AbsenActivity extends AppCompatActivity {
     List<Pegawai.DATABean> dataBeans;
     ApiInterface apiInterface;
 
+    AlertDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +48,7 @@ public class AbsenActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         context = this;
         apiInterface = UtilsApi.getApiService();
+        dialog = new SpotsDialog.Builder().setMessage("Please Wait").setCancelable(false).setContext(context).build();
 
         binding.searchAbsen.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -64,10 +69,12 @@ public class AbsenActivity extends AppCompatActivity {
     }
 
     private void getPegawai() {
+        dialog.show();
         apiInterface.allPegawai().enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
+                    dialog.dismiss();
                     try {
                         JSONObject object = new JSONObject(response.body().string());
                         if (object.getString("status").equalsIgnoreCase("200")){
@@ -95,6 +102,7 @@ public class AbsenActivity extends AppCompatActivity {
                     }
                 }else{
                     try {
+                        dialog.dismiss();
                         JSONObject object = new JSONObject(response.errorBody().string());
                         Toast.makeText(context, ""+object.getString("message"), Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
@@ -107,6 +115,7 @@ public class AbsenActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                dialog.dismiss();
                 Toast.makeText(context, "Cek Koneksi Internet", Toast.LENGTH_SHORT).show();
             }
         });
@@ -130,5 +139,17 @@ public class AbsenActivity extends AppCompatActivity {
             finish();
         }
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dialog.dismiss();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dialog.dismiss();
     }
 }
