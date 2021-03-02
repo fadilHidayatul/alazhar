@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Rapor.ShowRaporActivity"></activity>
+        <activity android:name=".Intro.ProfilActivity"></activity>
+        <activity android:name=".Rapor.ShowRaporActivity" />
         <activity android:name=".Rapor.RaporDetailActivity" />
         <activity android:name=".Rapor.RaporActivity" />
         <activity android:name=".SPP.SppGambarActivity" />

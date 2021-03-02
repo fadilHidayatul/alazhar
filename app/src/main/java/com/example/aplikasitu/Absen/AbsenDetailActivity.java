@@ -77,6 +77,9 @@ public class AbsenDetailActivity extends AppCompatActivity {
                             binding.recyclerAbsen2.setLayoutManager(new LinearLayoutManager(context));
                             binding.recyclerAbsen2.setHasFixedSize(true);
 
+                        }else{
+                            binding.cardNoAbsen.setVisibility(View.VISIBLE);
+                            binding.recyclerAbsen2.setVisibility(View.GONE);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

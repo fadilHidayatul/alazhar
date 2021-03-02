@@ -7,6 +7,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
     @GET("siswa/get_siswa.php")
@@ -42,17 +43,23 @@ public interface ApiInterface {
     );
 
     @GET("spp/get_spp_siswa.php")
-    Call<ResponseBody>getSppSiswa();
+    Call<ResponseBody>getSppSiswa(@Query("bulan") String bulan,
+                                  @Query("tahun") String tahun
+    );//change
 
     @FormUrlEncoded
     @POST("spp/get_spp.php")
     Call<ResponseBody>getSpp(@Field("id") String id,
-                             @Field("stat") String status
+                             @Field("stat") String status,
+                             @Field("bulan") String bulan,
+                             @Field("tahun") String tahun
     );
 
     @FormUrlEncoded
     @POST("spp/update_spp.php")
-    Call<ResponseBody>updateSpp(@Field("id") String id
+    Call<ResponseBody>updateSpp(@Field("id") String id,
+                                @Field("bulan") String bulan,
+                                @Field("tahun") String tahun
     );
 
     @FormUrlEncoded
@@ -62,9 +69,15 @@ public interface ApiInterface {
     );
 
     @FormUrlEncoded
-    @POST("rapor/get_rapor_siswa.php")
+    @POST("rapor/get_rapor_siswa.php") //change done
     Call<ResponseBody>getRapor(@Field("id_siswa") String idSiswa,
                                @Field("kelas") String kelas,
-                               @Field("grup") String grup
+                               @Field("grup") String grup,
+                               @Field("semester") String semester
+    );
+
+    @FormUrlEncoded
+    @POST("tatausaha/profil.php")
+    Call<ResponseBody>getProfilPegawai(@Field("id_user") String idUser
     );
 }

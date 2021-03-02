@@ -69,6 +69,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardNoAbsen"
+            android:visibility="gone"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_centerInParent="true"
+            app:cardCornerRadius="12dp"
+            android:backgroundTint="@color/testred"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingVertical="@dimen/_50sdp"
+                android:weightSum="5"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_no_absen"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_125sdp"/>
+                <TextView
+                    android:layout_weight="4"
+                    android:text="Absen Pegawai belum ada"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
     </RelativeLayout>
 
 </LinearLayout>

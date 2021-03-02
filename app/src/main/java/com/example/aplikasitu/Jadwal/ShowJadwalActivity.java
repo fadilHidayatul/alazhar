@@ -55,7 +55,7 @@ public class ShowJadwalActivity extends AppCompatActivity {
         grup = intent.getStringExtra("grup");
 
         if (hari.isEmpty()){
-            hari = "senin";
+            hari = "1";
         }
 
         pilihHari();
@@ -119,7 +119,7 @@ public class ShowJadwalActivity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     private void pilihHari() {
         binding.senin.setOnClickListener(v -> {
-            hari = binding.senin.getText().toString();
+            hari = "1"; //binding.senin.getText().toString();
             binding.senin.setTextColor(this.getResources().getColor(R.color.softred2));
             binding.selasa.setTextColor(this.getResources().getColor(R.color.colorPrimary));
             binding.rabu.setTextColor(this.getResources().getColor(R.color.colorPrimary));
@@ -130,7 +130,7 @@ public class ShowJadwalActivity extends AppCompatActivity {
             showSchedule(kelas,grup,hari);
         });
         binding.selasa.setOnClickListener(v -> {
-            hari = binding.selasa.getText().toString();
+            hari = "2"; //binding.selasa.getText().toString();
             binding.senin.setTextColor(this.getResources().getColor(R.color.colorPrimary));
             binding.selasa.setTextColor(this.getResources().getColor(R.color.softred2));
             binding.rabu.setTextColor(this.getResources().getColor(R.color.colorPrimary));
@@ -140,7 +140,7 @@ public class ShowJadwalActivity extends AppCompatActivity {
             showSchedule(kelas,grup,hari);
         });
         binding.rabu.setOnClickListener(v -> {
-            hari = binding.rabu.getText().toString();
+            hari = "3";//binding.rabu.getText().toString();
             binding.senin.setTextColor(this.getResources().getColor(R.color.colorPrimary));
             binding.selasa.setTextColor(this.getResources().getColor(R.color.colorPrimary));
             binding.rabu.setTextColor(this.getResources().getColor(R.color.softred2));
@@ -150,7 +150,7 @@ public class ShowJadwalActivity extends AppCompatActivity {
             showSchedule(kelas,grup,hari);
         });
         binding.kamis.setOnClickListener(v -> {
-            hari = binding.kamis.getText().toString();
+            hari = "4";//binding.kamis.getText().toString();
             binding.senin.setTextColor(this.getResources().getColor(R.color.colorPrimary));
             binding.selasa.setTextColor(this.getResources().getColor(R.color.colorPrimary));
             binding.rabu.setTextColor(this.getResources().getColor(R.color.colorPrimary));
@@ -160,7 +160,7 @@ public class ShowJadwalActivity extends AppCompatActivity {
             showSchedule(kelas,grup,hari);
         });
         binding.jumat.setOnClickListener(v -> {
-            hari = binding.jumat.getText().toString();
+            hari = "5";//binding.jumat.getText().toString();
             binding.senin.setTextColor(this.getResources().getColor(R.color.colorPrimary));
             binding.selasa.setTextColor(this.getResources().getColor(R.color.colorPrimary));
             binding.rabu.setTextColor(this.getResources().getColor(R.color.colorPrimary));
@@ -170,7 +170,7 @@ public class ShowJadwalActivity extends AppCompatActivity {
             showSchedule(kelas,grup,hari);
         });
         binding.sabtu.setOnClickListener(v -> {
-            hari = binding.sabtu.getText().toString();
+            hari = "6";//binding.sabtu.getText().toString();
             binding.senin.setTextColor(this.getResources().getColor(R.color.colorPrimary));
             binding.selasa.setTextColor(this.getResources().getColor(R.color.colorPrimary));
             binding.rabu.setTextColor(this.getResources().getColor(R.color.colorPrimary));

@@ -42,6 +42,7 @@ public class RaporChildAdapter extends RecyclerView.Adapter<RaporChildAdapter.vi
         holder.binding.cardGrup.setOnClickListener(v -> {
             Intent intent = new Intent(context, RaporDetailActivity.class);
             intent.putExtra("grup",listGrup.get(position).getGrup());
+//            manager.spKelas(PrefManager.GRUP_RAPOR,listGrup.get(position).getGrup());
             context.startActivity(intent);
 
 //            Toast.makeText(context, manager.getKelas()+"-"+listGrup.get(position).getGrup(), Toast.LENGTH_SHORT).show();

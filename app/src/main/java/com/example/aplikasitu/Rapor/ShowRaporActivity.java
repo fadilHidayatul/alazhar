@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.aplikasitu.SharedPreferences.PrefManager;
 import com.example.aplikasitu.UtilsApi.ApiInterface;
 import com.example.aplikasitu.UtilsApi.UtilsApi;
 import com.example.aplikasitu.databinding.ActivityShowRaporBinding;
@@ -35,10 +36,11 @@ import retrofit2.Response;
 
 public class ShowRaporActivity extends AppCompatActivity {
     private ActivityShowRaporBinding binding;
-    String idSIswa,kelas,grup,file;
+    String idSIswa,kelas,grup,semester,file;
 
     Context context;
     ApiInterface apiInterface;
+    PrefManager manager;
     AlertDialog dialog;
 
     RemotePDFViewPager remotePDFViewPager;
@@ -51,22 +53,24 @@ public class ShowRaporActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         context = this;
+        manager = new PrefManager(context);
         apiInterface = UtilsApi.getApiService();
         dialog = new SpotsDialog.Builder().setMessage("Please Wait").setContext(context).setCancelable(false).build();
 
+
         Intent intent = getIntent();
-        idSIswa = intent.getStringExtra("idSiswa");
-        kelas = intent.getStringExtra("kelas");
-        grup = intent.getStringExtra("grup");
+        semester = intent.getStringExtra("id_smt");
+        idSIswa = manager.getIdSiswaRapor();
+        kelas = manager.getKelas();
+        grup = manager.getGrupRapor();
 
         getRaporSiswa();
 
     }
 
     private void getRaporSiswa() {
-
         dialog.show();
-        apiInterface.getRapor(idSIswa,kelas,grup).enqueue(new Callback<ResponseBody>() {
+        apiInterface.getRapor(idSIswa,kelas,grup,semester).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){

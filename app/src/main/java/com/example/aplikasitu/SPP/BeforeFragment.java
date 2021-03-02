@@ -52,6 +52,7 @@ public class BeforeFragment extends Fragment {
     String idSiswa = "";
     String status = "0";
     String namaSiswa = "";
+    String bulan,tahun;
 
     AlertDialog dialog;
 
@@ -73,6 +74,8 @@ public class BeforeFragment extends Fragment {
 
         idSiswa = manager.getSppSiswa();
         namaSiswa = manager.getSppNama();
+        bulan = manager.getBulanSPP();
+        tahun = manager.getTahunSPP();
 
         getSPP(idSiswa);
 
@@ -84,7 +87,7 @@ public class BeforeFragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 //                            Toast.makeText(context, "Sudah Verifikasi", Toast.LENGTH_SHORT).show();
-                            updateSpp(idSiswa);
+                            updateSpp(idSiswa,bulan,tahun);
                         }
                     })
                     .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
@@ -104,7 +107,7 @@ public class BeforeFragment extends Fragment {
 
     private void getSPP(String idSiswa) {
         dialog.show();
-        apiInterface.getSpp(idSiswa,status).enqueue(new Callback<ResponseBody>() {
+        apiInterface.getSpp(idSiswa,status,bulan,tahun).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
@@ -128,7 +131,7 @@ public class BeforeFragment extends Fragment {
                            binding.bln.setText("-"+dataBeans.get(0).getTgl_bayar().substring(5,7));
                            binding.tgl.setText(dataBeans.get(0).getTgl_bayar().substring(8,10));
                             Glide.with(context)
-                                    .load(UtilsApi.img+dataBeans.get(0).getBukti())
+                                    .load(UtilsApi.imgSPP+dataBeans.get(0).getBukti())
                                     .fitCenter()
                                     .placeholder(R.drawable.ic_exclamation)
                                     .into(binding.imgBukti);
@@ -163,9 +166,9 @@ public class BeforeFragment extends Fragment {
 
     }
 
-    private void updateSpp(String idSiswa) {
+    private void updateSpp(String idSiswa, String bulan, String tahun) {
         dialog.show();
-        apiInterface.updateSpp(idSiswa).enqueue(new Callback<ResponseBody>() {
+        apiInterface.updateSpp(idSiswa,bulan,tahun).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){

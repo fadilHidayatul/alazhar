@@ -42,17 +42,46 @@
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <LinearLayout
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:id="@+id/getTanggal"
+            android:background="@drawable/bg_tgl"
+            android:layout_marginHorizontal="12dp"
+            android:paddingVertical="14dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/ic_date_range_black_24dp"
+                android:layout_marginEnd="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/txtTanggal"
+                android:text="Silahkan Pilih Tanggal Terlebih Dahulu"
+                android:fontFamily="@font/quicksand_medium"
+                android:textSize="18sp"
+
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
         <TextView
             android:id="@+id/hint"
+            android:layout_below="@id/getTanggal"
             android:text="List siswa yang melakukan pembayaran SPP"
             android:gravity="center"
             android:textSize="18sp"
             android:layout_marginHorizontal="@dimen/_24sdp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/quicksand_medium"
             android:textColor="@color/colorKelas2"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_spp"
             android:layout_below="@id/hint"
@@ -63,6 +92,28 @@
             tools:itemCount="6"
             tools:listitem="@layout/row_spp"
             android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:id="@+id/noSPP"
+            android:visibility="gone"
+            android:layout_below="@id/hint"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/ic_cash"
+                android:layout_width="125dp"
+                android:layout_height="125dp"/>
+            <TextView
+                android:text="Tidak ada siswa yang membayar bulan ini"
+                android:fontFamily="@font/quicksand_bold"
+                android:textColor="@color/colorKelas2"
+                android:textSize="18dp"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
     </RelativeLayout>
 

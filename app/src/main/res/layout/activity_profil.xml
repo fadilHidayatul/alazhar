@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_alazhar_p"
+    android:weightSum="10"
+    tools:context=".Intro.ProfilActivity">
+
+    <RelativeLayout
+        android:layout_weight="6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="12dp"
+            android:onClick="back"
+            android:src="@drawable/ic_arrow_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
+            android:layout_toEndOf="@id/backButton"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="Profil"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgProfil"
+            android:src="@drawable/ic_officer"
+           android:layout_centerInParent="true"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+        <TextView
+            android:id="@+id/namaProfil"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:textSize="24sp"
+            android:text="Nama Pegawai"
+            android:textColor="@color/white"
+            android:layout_below="@id/imgProfil"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/statusProfil"
+            android:fontFamily="@font/quicksand_medium"
+            android:textSize="20sp"
+            android:text="Tata Usaha"
+            android:textColor="@color/white"
+            android:layout_below="@id/namaProfil"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_weight="4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+       <androidx.core.widget.NestedScrollView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:paddingBottom="12dp"
+               android:orientation="vertical"
+               android:paddingTop="24dp">
+
+               <LinearLayout
+                   android:id="@+id/l1"
+                   android:layout_marginStart="28dp"
+                   android:layout_marginEnd="12dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal">
+                   <TextView
+                       android:layout_weight="1"
+                       android:layout_marginTop="2dp"
+                       android:fontFamily="@font/quicksand_bold"
+                       android:textSize="18sp"
+                       android:text="NIP Pegawai"
+                       android:textColor="@color/black"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"/>
+                   <TextView
+                       android:id="@+id/nip_pegawai"
+                       android:layout_weight="1"
+                       android:fontFamily="@font/quicksand_medium"
+                       android:textSize="18sp"
+                       android:text="-"
+                       android:textColor="@color/colorPrimary"
+                       android:layout_gravity="center_vertical"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"/>
+               </LinearLayout>
+
+               <LinearLayout
+                   android:id="@+id/l2"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="28dp"
+                   android:layout_marginTop="12dp"
+                   android:layout_marginEnd="12dp"
+                   android:orientation="horizontal">
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+
+                       android:layout_marginTop="2dp"
+                       android:layout_weight="1"
+                       android:fontFamily="@font/quicksand_bold"
+                       android:text="E-Mail"
+                       android:textColor="@color/black"
+                       android:textSize="18sp" />
+                   <TextView
+                       android:id="@+id/email_pegawai"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center_vertical"
+                       android:layout_weight="1"
+                       android:fontFamily="@font/quicksand_medium"
+                       android:text="-"
+                       android:textColor="@color/colorPrimary"
+                       android:textSize="18sp" />
+               </LinearLayout>
+
+               <LinearLayout
+                   android:id="@+id/l3"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="28dp"
+                   android:layout_marginTop="12dp"
+                   android:layout_marginEnd="12dp"
+                   android:orientation="horizontal">
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+
+                       android:layout_marginTop="2dp"
+                       android:layout_weight="1"
+                       android:fontFamily="@font/quicksand_bold"
+                       android:text="No. Telp"
+                       android:textColor="@color/black"
+                       android:textSize="18sp" />
+                   <TextView
+                       android:id="@+id/telp_pegawai"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center_vertical"
+                       android:layout_weight="1"
+                       android:fontFamily="@font/quicksand_medium"
+                       android:text="-"
+                       android:textColor="@color/colorPrimary"
+                       android:textSize="18sp" />
+               </LinearLayout>
+
+               <LinearLayout
+                   android:id="@+id/l4"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="28dp"
+                   android:layout_marginTop="12dp"
+                   android:layout_marginEnd="12dp"
+                   android:orientation="horizontal">
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="2dp"
+                       android:layout_weight="1"
+                       android:fontFamily="@font/quicksand_bold"
+                       android:text="Alamat"
+                       android:textColor="@color/black"
+                       android:textSize="18sp" />
+                   <TextView
+                       android:id="@+id/alamat_pegawai"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center_vertical"
+                       android:layout_weight="1"
+                       android:fontFamily="@font/quicksand_medium"
+                       android:text="-"
+                       android:textColor="@color/colorPrimary"
+                       android:textSize="18sp" />
+               </LinearLayout>
+
+               <LinearLayout
+                   android:id="@+id/l7"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="28dp"
+                   android:layout_marginTop="12dp"
+                   android:layout_marginEnd="12dp"
+                   android:orientation="horizontal">
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="2dp"
+                       android:layout_marginEnd="4dp"
+                       android:layout_weight="1"
+                       android:fontFamily="@font/quicksand_bold"
+                       android:text="Tanggal Terdaftar di Sekolah"
+                       android:textColor="@color/black"
+                       android:textSize="18sp" />
+                   <TextView
+                       android:id="@+id/daftar_pegawai"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center_vertical"
+                       android:layout_weight="1"
+                       android:fontFamily="@font/quicksand_medium"
+                       android:text="-"
+                       android:textColor="@color/colorPrimary"
+                       android:textSize="18sp" />
+               </LinearLayout>
+
+               <LinearLayout
+                   android:id="@+id/l8"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="28dp"
+                   android:layout_marginTop="12dp"
+                   android:layout_marginEnd="12dp"
+                   android:orientation="horizontal">
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="2dp"
+                       android:layout_marginEnd="4dp"
+                       android:layout_weight="1"
+                       android:fontFamily="@font/quicksand_bold"
+                       android:text="Pendidikan"
+                       android:textColor="@color/black"
+                       android:textSize="18sp" />
+                   <TextView
+                       android:id="@+id/pendidikan_pegawai"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center_vertical"
+                       android:layout_weight="1"
+                       android:fontFamily="@font/quicksand_medium"
+                       android:text="-"
+                       android:textColor="@color/colorPrimary"
+                       android:textSize="18sp" />
+               </LinearLayout>
+
+
+           </LinearLayout>
+       </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+
+</LinearLayout>

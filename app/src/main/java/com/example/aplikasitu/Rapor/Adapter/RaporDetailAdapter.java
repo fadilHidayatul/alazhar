@@ -8,12 +8,18 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.aplikasitu.Rapor.RaporDetailActivity;
 import com.example.aplikasitu.Rapor.ShowRaporActivity;
 import com.example.aplikasitu.Rapor.SiswaByKelas;
 import com.example.aplikasitu.SharedPreferences.PrefManager;
 import com.example.aplikasitu.databinding.RowRaporSiswaBinding;
+
+
 
 import java.util.List;
 
@@ -41,15 +47,16 @@ public class RaporDetailAdapter extends RecyclerView.Adapter<RaporDetailAdapter.
     @Override
     public void onBindViewHolder(@NonNull RaporDetailAdapter.viewHolder holder, int position) {
         manager = new PrefManager(context);
+        FragmentManager fragmentManager = ((RaporDetailActivity) context).getSupportFragmentManager();
 
-        holder.binding.namaSiswa.setText(listSiswa.get(position).getSiswa());
+        holder.binding.namaSiswa.setText(listSiswa.get(position).getSiswa()); //masih B
         holder.binding.no.setText(""+listSiswa.get(position).getNo());
         holder.binding.cardSiswa.setOnClickListener(v -> {
-            Intent intent = new Intent(context, ShowRaporActivity.class);
-            intent.putExtra("idSiswa",listSiswa.get(position).getId_siswa());
-            intent.putExtra("kelas",manager.getKelas());
-            intent.putExtra("grup",grup);
-            context.startActivity(intent);
+            manager.spKelas(PrefManager.ID_SISWA_RAPOR,listSiswa.get(position).getId_siswa());
+            manager.spGrupKelasRapor(PrefManager.GRUP_RAPOR,grup);
+
+            SemesterDialog dialog = new SemesterDialog();
+            dialog.show(fragmentManager, "Semester Dialog");
         });
     }
 

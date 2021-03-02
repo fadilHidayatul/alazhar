@@ -51,7 +51,7 @@ public class PegawaiAdapter extends RecyclerView.Adapter<PegawaiAdapter.viewHold
         holder.pegawaiBinding.email.setText(filterList.get(position).getEmail());
         holder.pegawaiBinding.nohp.setText("No Hp : "+filterList.get(position).getNohp());
         Glide.with(context)
-                .load(UtilsApi.img+filterList.get(position).getFoto())
+                .load(UtilsApi.imgPegawai+filterList.get(position).getFoto())
                 .centerCrop()
                 .placeholder(R.drawable.ic_officer)
                 .override(300,300)

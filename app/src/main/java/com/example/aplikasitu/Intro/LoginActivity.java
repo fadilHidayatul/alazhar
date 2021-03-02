@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.aplikasitu.Main.MainActivity;
-import com.example.aplikasitu.R;
 import com.example.aplikasitu.SharedPreferences.PrefManager;
 import com.example.aplikasitu.UtilsApi.ApiInterface;
 import com.example.aplikasitu.UtilsApi.UtilsApi;
@@ -20,7 +19,6 @@ import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -55,7 +53,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void moveLogin() {
-
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +77,8 @@ public class LoginActivity extends AppCompatActivity {
                                                 User.DataBean user = gson.fromJson(data + "",User.DataBean.class);
 
                                                 manager.saveSession();
-                                                manager.spIdSiswa(PrefManager.ID_SISWA,user.getId_user());
+                                                manager.spIdUser(PrefManager.ID_USER,user.getId_user());
+                                                manager.spIdPegawai(PrefManager.ID_PEGAWAI,user.getId_pegawai());
                                                 manager.spUsername(PrefManager.USERNAME,user.getUsername());
                                                 manager.spLevel(PrefManager.LEVEL,user.getLevel());
 

@@ -30,7 +30,7 @@ public class SppGambarActivity extends AppCompatActivity {
         String imgBukti = intent.getStringExtra("imgBukti");
 
         Glide.with(context)
-                .load(UtilsApi.img+imgBukti)
+                .load(UtilsApi.imgSPP+imgBukti)
                 .fitCenter()
                 .placeholder(R.drawable.ic_exclamation)
                 .into(binding.imgBuktiDetail);

@@ -50,6 +50,8 @@ public class AfterFragment extends Fragment {
     List<Spp.DATABean> dataBeans;
 
     String idSiswa = "";
+    String bulan,tahun;
+
 
     AlertDialog dialog;
 
@@ -67,7 +69,8 @@ public class AfterFragment extends Fragment {
         apiInterface = UtilsApi.getApiService();
         dialog = new SpotsDialog.Builder().setMessage("Please Wait").setContext(context).setCancelable(false).build();
 
-
+        bulan = manager.getBulanSPP();
+        tahun = manager.getTahunSPP();
         idSiswa = manager.getSppSiswa();
         binding.siswa.setText(manager.getSppNama());
 
@@ -85,7 +88,7 @@ public class AfterFragment extends Fragment {
 
     private void getSpp(String idSiswa) {
         dialog.show();
-        apiInterface.getSpp(idSiswa,"1").enqueue(new Callback<ResponseBody>() {
+        apiInterface.getSpp(idSiswa,"1",bulan,tahun).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
@@ -110,7 +113,7 @@ public class AfterFragment extends Fragment {
                             binding.bln.setText("-"+dataBeans.get(0).getTgl_bayar().substring(5,7));
                             binding.tgl.setText(dataBeans.get(0).getTgl_bayar().substring(8,10));
                             Glide.with(context)
-                                    .load(UtilsApi.img+dataBeans.get(0).getBukti())
+                                    .load(UtilsApi.imgSPP+dataBeans.get(0).getBukti())
                                     .fitCenter()
                                     .placeholder(R.drawable.ic_exclamation)
                                     .into(binding.imgBukti);

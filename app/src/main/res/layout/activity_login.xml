@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/ic_tes_bg"
+    android:background="@drawable/bg_alazhar_l"
     tools:context=".Intro.LoginActivity">
 
     <LinearLayout
@@ -21,9 +21,8 @@
                 android:id="@+id/img"
                 android:layout_width="@dimen/_120sdp"
                 android:layout_height="@dimen/_120sdp"
-                android:paddingLeft="@dimen/_15sdp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_login"
+                android:src="@drawable/logo_alazhar"
                 />
 
             <TextView
@@ -34,7 +33,7 @@
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/quicksand_bold"
                 android:text="Tata Usaha Al-Azhar"
-                android:textColor="@color/redlight"
+                android:textColor="@color/testred"
                 android:textSize="20sp" />
 
             <TextView

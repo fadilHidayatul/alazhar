@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F2A92</color>
-    <color name="colorPrimaryDark">#3F2A92</color>
+    <color name="colorPrimary">#0283D9</color>
+    <color name="colorPrimaryDark">#0283D9</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="white">#FFFFFF</color>
     <color name="softwhite">#E9EBF3</color>
@@ -12,18 +12,18 @@
     <color name="redlight">#D15858</color>
     <color name="softred">#E69595</color>
     <color name="softred2">#ED6769</color>
-    <color name="testred">#F4E1E1</color>
+    <color name="testred">#0D0283D9</color>
     <color name="newred">#EB6061</color>
-    <color name="softblue">#CC3F2A92</color>
-    <color name="testblue2">#D6D1EA</color>
+    <color name="softblue">#CC0283D9</color>
+    <color name="testblue2">#260283D9</color>
     <color name="testblue">#EDEBF4</color>
     <color name="newblue">#ABCDEF</color>
     <color name="colorKelas1">#FEC9A3</color>
     <color name="colorKelas2">#4D4D4D</color>
     <color name="colorJumlahKelas">#976147</color>
     <color name="cyan">#E7F5F8</color>
-    <color name="lightgreen">#D6F6D6</color>
+    <color name="lightgreen">#D6F6F5</color>
     <color name="green">#67CD65</color>
-    <color name="line">#ABB8AB</color>
+    <color name="line">#800283D9</color>
 
 </resources>

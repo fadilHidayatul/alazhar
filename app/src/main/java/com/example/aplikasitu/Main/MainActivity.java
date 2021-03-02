@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.aplikasitu.Absen.AbsenActivity;
 import com.example.aplikasitu.Intro.LoginActivity;
+import com.example.aplikasitu.Intro.ProfilActivity;
 import com.example.aplikasitu.Jadwal.JadwalActivity;
 import com.example.aplikasitu.Kelas.KelasActivity;
 import com.example.aplikasitu.Pegawai.PegawaiActivity;
@@ -22,8 +23,6 @@ import com.example.aplikasitu.SPP.SppActivity;
 import com.example.aplikasitu.SharedPreferences.PrefManager;
 import com.example.aplikasitu.Siswa.SiswaActivity;
 import com.example.aplikasitu.databinding.ActivityMainBinding;
-
-import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -89,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), RaporActivity.class);
             startActivity(intent);
         });
+        binding.imgUser.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ProfilActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void logout() {
@@ -139,4 +142,18 @@ public class MainActivity extends AppCompatActivity {
             },2000);
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        manager.getIdPegawai();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        manager.getIdPegawai();
+    }
+
+
 }
