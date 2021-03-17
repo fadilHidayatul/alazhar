@@ -53,7 +53,7 @@
         android:layout_height="match_parent">
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchPegawai"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_marginHorizontal="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
